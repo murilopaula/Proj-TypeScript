@@ -1,13 +1,15 @@
 import express from "express";
-import {Request, Response} from "express";
-const app = express();
+import { router } from "./config/routes";
+import { mongoose } from "./config/database";
 
 console.clear();
 
-app.get("/", (req: Request, res: Response) => {
-    res.send("Hello World!");
-});
+const app = express();
+//const database = mongoose();
+
+app.use(express.json());
+app.use(router);
 
 app.listen(3000, () => {
-    console.log("Hello World!");
+    console.log("Servidor iniciado...");
 });
